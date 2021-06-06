@@ -22,17 +22,26 @@ HunterGate(
 
 # TODO: rename project and delete this comment
 project(template VERSION 0.1.0)
-string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
-string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
-string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
+#string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
+#string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
+#string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
+
+hunter_add_package(Boost COMPONENTS thread program_options system filesystem)
+find_package(Boost CONFIG REQUIRED thread program_options system filesystem)
+
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Log.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/PageContainer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/StatSender.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/UsedMemory.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Histogram.cpp
 )
+target_link_libraries(${PROJECT_NAME} Boost::program_options Boost::system Boost::filesystem)
 
 add_executable(demo
   ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
@@ -50,7 +59,7 @@ if(BUILD_TESTS)
     # TODO: enum your files and delete this comment
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
   )
-  target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main)
+  target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main GTest::gmock)
   enable_testing()
   add_test(NAME unit_tests COMMAND tests)
 endif()
