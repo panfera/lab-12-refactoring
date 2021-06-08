@@ -3,8 +3,8 @@
 //
 // Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_LOG_HPP
-#define TEMPLATE_LOG_HPP
+#ifndef INCLUDE_LOG_HPP_
+#define INCLUDE_LOG_HPP_
 
 #include <iostream>
 
@@ -23,4 +23,4 @@ class Log {
   mutable std::ostream* out_;
 };
 
-#endif  // TEMPLATE_LOG_HPP
+#endif  // INCLUDE_LOG_HPP_

@@ -10,7 +10,7 @@
 
 class StatSender : public ISkippedObserver, public ILoadedObserver {
  public:
-  StatSender(PageContainer& page);
+  explicit StatSender(PageContainer& page);
 
   void OnLoaded(const std::vector<Item>& new_items) override;
 
