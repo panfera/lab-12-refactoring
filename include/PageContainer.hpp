@@ -1,14 +1,18 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_PAGECONTAINER_HPP
-#define TEMPLATE_PAGECONTAINER_HPP
+#ifndef INCLUDE_PAGECONTAINER_HPP_
+#define INCLUDE_PAGECONTAINER_HPP_
 
 #include "Log.hpp"
 #include "Observer.hpp"
 #include "iostream"
 #include <fstream>      // ifstream
+#include <string>
+#include <vector>
+#include <list>
 
 class PageContainer : ISubject {
  public:
@@ -54,4 +58,4 @@ class PageContainer : ISubject {
   std::list<ISkippedObserver*> list_sobservers_;
 };
 
-#endif  // TEMPLATE_PAGECONTAINER_HPP
+#endif  // INCLUDE_PAGECONTAINER_HPP_

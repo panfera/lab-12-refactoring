@@ -118,7 +118,7 @@ TEST(Histogram, Test) {
   EXPECT_EQ(hist.GetCount(), 2);
 }
 
-TEST(Ifstream, Close) {
+/*TEST(Ifstream, Close) {
   PageContainer page;
   Histogram hist (page);
   StatSender stat (page);
@@ -144,4 +144,4 @@ TEST(Ifstream, Data_null) {
   float threshold = 2;
   EXPECT_THROW(page.Load(in, threshold), std::runtime_error);
   EXPECT_EQ(memory.used(), 0);
-}
+}*/

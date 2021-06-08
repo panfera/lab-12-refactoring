@@ -1,14 +1,16 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_HISTOGRAM_HPP
-#define TEMPLATE_HISTOGRAM_HPP
+#ifndef INCLUDE_HISTOGRAM_HPP_
+#define INCLUDE_HISTOGRAM_HPP_
 #include "PageContainer.hpp"
+#include <vector>
 
 class Histogram : IDataLoadedObserver, ISkippedObserver {
  public:
-  Histogram(PageContainer& page);
+  explicit Histogram(PageContainer& page);
   void OnDataLoad(const std::vector<Item>& old_items,
                   const std::vector<Item>& new_items) override;
 
@@ -27,4 +29,4 @@ class Histogram : IDataLoadedObserver, ISkippedObserver {
   PageContainer* page_;
 };
 
-#endif  // TEMPLATE_HISTOGRAM_HPP
+#endif  // INCLUDE_HISTOGRAM_HPP_

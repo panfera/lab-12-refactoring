@@ -1,14 +1,16 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_OBSERVER_HPP
-#define TEMPLATE_OBSERVER_HPP
+#ifndef INCLUDE_OBSERVER_HPP_
+#define INCLUDE_OBSERVER_HPP_
 
 #include <iostream>
 #include <list>
 #include <string>
 #include "Data.hpp"
+
 class IDataLoadedObserver {
  public:
   virtual ~IDataLoadedObserver() = default;
@@ -32,19 +34,20 @@ class ISkippedObserver {
 
 class ISubject {
  public:
-  virtual ~ISubject(){};
+  virtual ~ISubject(){}
   virtual void AttachDataLoaded(IDataLoadedObserver *observer) = 0;
   virtual void AttachRowLoaded(IRawLoadedObserver *observer) = 0;
   virtual void AttachSkipped(ISkippedObserver *observer) = 0;
-  virtual void DetachDataLoaded(IDataLoadedObserver *observer) = 0;
-  virtual void DetachRowLoaded(IRawLoadedObserver *observer) = 0;
-  virtual void DetachSkipped(ISkippedObserver *observer) = 0;
+  [[maybe_unused]] virtual void DetachDataLoaded(IDataLoadedObserver *observer) = 0;
+  [[maybe_unused]] virtual void DetachRowLoaded(IRawLoadedObserver *observer) = 0;
+  [[maybe_unused]] virtual void DetachSkipped(ISkippedObserver *observer) = 0;
   virtual void NotifyDataLoadedObservers(const std::vector<Item>& old_items,
-                                         const std::vector<Item>& new_items) = 0;
-  virtual void NotifyRowLoadedObservers(const std::vector<std::string>& old_items,
-                                        const std::vector<std::string>& new_items) = 0;
+                                        const std::vector<Item>& new_items) = 0;
+  virtual void NotifyRowLoadedObservers(
+      const std::vector<std::string>& old_items,
+      const std::vector<std::string>& new_items) = 0;
   virtual void NotifySkippedObservers(const Item& item) = 0;
   virtual void NotifyLoadedObservers(const std::vector<Item>& new_items) = 0;
 };
 
-#endif  // TEMPLATE_OBSERVER_HPP
+#endif  // INCLUDE_OBSERVER_HPP_

@@ -1,10 +1,12 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_STATSENDER_HPP
-#define TEMPLATE_STATSENDER_HPP
+#ifndef INCLUDE_STATSENDER_HPP_
+#define INCLUDE_STATSENDER_HPP_
 #include "PageContainer.hpp"
+#include <vector>
 
 class StatSender : ISkippedObserver {
  public:
@@ -22,4 +24,4 @@ class StatSender : ISkippedObserver {
   std::ofstream fstr{"network", std::ios::binary};
 };
 
-#endif  // TEMPLATE_STATSENDER_HPP
+#endif  // INCLUDE_STATSENDER_HPP_

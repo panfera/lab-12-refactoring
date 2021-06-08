@@ -1,9 +1,10 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_DATA_HPP
-#define TEMPLATE_DATA_HPP
+#ifndef INCLUDE_DATA_HPP_
+#define INCLUDE_DATA_HPP_
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -21,4 +22,4 @@ struct Item {
   float score = 0;
 };
 
-#endif  // TEMPLATE_DATA_HPP
+#endif  // INCLUDE_DATA_HPP_

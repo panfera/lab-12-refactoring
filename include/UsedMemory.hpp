@@ -1,15 +1,18 @@
 //
 // Created by hacker on 6/6/21.
 //
+// Copyright 2021 pan_fera
 
-#ifndef TEMPLATE_USEDMEMORY_HPP
-#define TEMPLATE_USEDMEMORY_HPP
+#ifndef INCLUDE_USEDMEMORY_HPP_
+#define INCLUDE_USEDMEMORY_HPP_
 
 #include "PageContainer.hpp"
+#include <string>
+#include <vector>
 
 class UsedMemory : IDataLoadedObserver, IRawLoadedObserver {
  public:
-  UsedMemory(PageContainer& page);
+  explicit UsedMemory(PageContainer& page);
 
   void OnDataLoad(const std::vector<Item>& old_items,
                   const std::vector<Item>& new_items) override;
@@ -25,4 +28,4 @@ class UsedMemory : IDataLoadedObserver, IRawLoadedObserver {
   size_t used_ = 0;
 };
 
-#endif  // TEMPLATE_USEDMEMORY_HPP
+#endif  // INCLUDE_USEDMEMORY_HPP_
