@@ -14,7 +14,7 @@
 #include <vector>
 #include <list>
 
-class PageContainer : ISubject {
+class PageContainer : public ISubject {
  public:
   void Load(std::istream& io, float threshold);
 
@@ -32,11 +32,15 @@ class PageContainer : ISubject {
 
   void AttachSkipped(ISkippedObserver* observer) override;
 
+  void AttachLoaded(ILoadedObserver* observer) override;
+
   void DetachDataLoaded(IDataLoadedObserver* observer) override;
 
   void DetachRowLoaded(IRawLoadedObserver* observer) override;
 
   void DetachSkipped(ISkippedObserver* observer) override;
+
+  void DetachLoaded(ILoadedObserver* observer) override;
 
  private:
   void NotifyDataLoadedObservers(const std::vector<Item>& old_items,
@@ -56,6 +60,7 @@ class PageContainer : ISubject {
   std::list<IDataLoadedObserver*> list_dlobservers_;
   std::list<IRawLoadedObserver*> list_rlobservers_;
   std::list<ISkippedObserver*> list_sobservers_;
+  std::list<ILoadedObserver*> list_lobservers_;
 };
 
 #endif  // INCLUDE_PAGECONTAINER_HPP_

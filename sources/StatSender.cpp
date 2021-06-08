@@ -8,6 +8,7 @@
 StatSender::StatSender(PageContainer& page)
     : log_(&Log::getInstance()), page_(&page) {
   page_->AttachSkipped(this);
+  page_->AttachLoaded(this);
 }
 
 void StatSender::OnLoaded(const std::vector<Item>& new_items) {

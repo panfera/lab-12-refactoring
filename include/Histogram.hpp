@@ -8,13 +8,11 @@
 #include "PageContainer.hpp"
 #include <vector>
 
-class Histogram : IDataLoadedObserver, ISkippedObserver {
+class Histogram : public IDataLoadedObserver, public ISkippedObserver {
  public:
   explicit Histogram(PageContainer& page);
   void OnDataLoad(const std::vector<Item>& old_items,
                   const std::vector<Item>& new_items) override;
-
-  void OnLoaded(const std::vector<Item>& new_items) override{};
 
   void Skip(const Item& item) override;
 

@@ -110,6 +110,10 @@ void PageContainer::AttachSkipped(ISkippedObserver* observer) {
   list_sobservers_.push_back(observer);
 }
 
+void PageContainer::AttachLoaded(ILoadedObserver* observer) {
+  list_lobservers_.push_back(observer);
+}
+
 void PageContainer::DetachDataLoaded(IDataLoadedObserver* observer) {
   list_dlobservers_.remove(observer);
 }
@@ -120,6 +124,10 @@ void PageContainer::DetachRowLoaded(IRawLoadedObserver* observer) {
 
 void PageContainer::DetachSkipped(ISkippedObserver* observer) {
   list_sobservers_.remove(observer);
+}
+
+void PageContainer::DetachLoaded(ILoadedObserver* observer) {
+  list_lobservers_.remove(observer);
 }
 
 void PageContainer::NotifyDataLoadedObservers(
@@ -138,5 +146,5 @@ void PageContainer::NotifySkippedObservers(const Item& item) {
 }
 
 void PageContainer::NotifyLoadedObservers(const std::vector<Item>& new_items) {
-  for (auto& it : list_sobservers_) it->OnLoaded(new_items);
+  for (auto& it : list_lobservers_) it->OnLoaded(new_items);
 }

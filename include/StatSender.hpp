@@ -8,7 +8,7 @@
 #include "PageContainer.hpp"
 #include <vector>
 
-class StatSender : ISkippedObserver {
+class StatSender : public ISkippedObserver, public ILoadedObserver {
  public:
   StatSender(PageContainer& page);
 
@@ -25,3 +25,4 @@ class StatSender : ISkippedObserver {
 };
 
 #endif  // INCLUDE_STATSENDER_HPP_
+

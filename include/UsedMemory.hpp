@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-class UsedMemory : IDataLoadedObserver, IRawLoadedObserver {
+class UsedMemory : public IDataLoadedObserver, public IRawLoadedObserver {
  public:
   explicit UsedMemory(PageContainer& page);
 

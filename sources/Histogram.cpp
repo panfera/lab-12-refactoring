@@ -8,7 +8,7 @@
 Histogram::Histogram(PageContainer& page) : finish_(false), avg_(0),
                                             count_skip_(0), page_(&page){
   page_->AttachSkipped(this);
-  page.AttachDataLoaded(this);
+  page_->AttachDataLoaded(this);
 }
 void Histogram::OnDataLoad(const std::vector<Item>& old_items,
                            const std::vector<Item>& new_items) {
